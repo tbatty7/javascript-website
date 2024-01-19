@@ -11,10 +11,18 @@ function onPress(inputName) {
 
 function addNamesToHTML(data) {
   const pokemonList = data.results.map((pokemon) => {
-    const h2Element = document.createElement("h2");
-    h2Element.innerHTML = pokemon.name;
-    console.log("Name with H2 tag: ", h2Element);
-    return h2Element;
+    const pokemonContainer = document.createElement("div");
+    pokemonContainer.setAttribute(
+      "style",
+      "width: 250px; display: inline-block;" +
+        "margin: 5px; background-color: cornflowerblue; border-radius: 30px;"
+    );
+    const title = document.createElement("button");
+    title.innerHTML = pokemon.name;
+    pokemonContainer.append(title);
+    console.log("Name with H2 tag: ", pokemonContainer);
+
+    return pokemonContainer;
   });
   $("#displayedText").html(pokemonList);
 }
