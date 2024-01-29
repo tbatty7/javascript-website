@@ -1,7 +1,9 @@
+let url = "https://pokeapi.co/api/v2/pokemon";
+
 function onPress(inputName) {
-  const url = "https://pokeapi.co/api/v2/pokemon";
   $.get(url, function (data, status) {
     if (status === "success") {
+      url = data.next;
       displayPokemonList(data);
     } else {
       console.log("Status was: " + status);
@@ -57,7 +59,7 @@ function buildHTML(pokemonList) {
 
 function buildButtonTag(pokemon) {
   const titleButton = document.createElement("button");
-  titleButton.setAttribute("onclick", () => { });
+  titleButton.setAttribute("onclick", () => {});
   titleButton.innerHTML = pokemon.name;
   return titleButton;
 }
@@ -68,4 +70,3 @@ function buildImageTag(pokemon) {
   image.setAttribute("style", "width: 100px; height: 100px;");
   return image;
 }
-
